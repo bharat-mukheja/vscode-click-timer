@@ -1,0 +1,67 @@
+{
+  "name": "vscode-click-timer",
+  "displayName": "Click Timer",
+  "description": "A status bar countdown timer. Click to pause or resume, and open the menu to set time or manage the timer.",
+  "version": "0.1.0",
+  "publisher": "bmukheja",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bharat-mukheja/vscode-click-timer.git"
+  },
+  "homepage": "https://github.com/bharat-mukheja/vscode-click-timer#readme",
+  "bugs": { "url": "https://github.com/bharat-mukheja/vscode-click-timer/issues" },
+  "engines": { "vscode": "^1.96.0" },
+  "categories": ["Other"],
+  "keywords": ["timer", "countdown", "status bar", "focus"],
+  "main": "./dist/extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": {
+    "untrustedWorkspaces": { "supported": true },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "commands": [
+      { "command": "clickTimer.toggle", "title": "Pause / Resume", "category": "Click Timer" },
+      { "command": "clickTimer.showMenu", "title": "Show Timer Menu", "category": "Click Timer" },
+      { "command": "clickTimer.start", "title": "Start / Resume", "category": "Click Timer" },
+      { "command": "clickTimer.pause", "title": "Pause", "category": "Click Timer" },
+      { "command": "clickTimer.stop", "title": "Stop", "category": "Click Timer" },
+      { "command": "clickTimer.reset", "title": "Reset", "category": "Click Timer" },
+      { "command": "clickTimer.setTime", "title": "Set Time", "category": "Click Timer" }
+    ],
+    "configuration": {
+      "title": "Click Timer",
+      "properties": {
+        "clickTimer.defaultMinutes": {
+          "type": "number",
+          "default": 25,
+          "minimum": 0.016666666666666666,
+          "maximum": 1440,
+          "description": "Initial countdown duration in minutes (1 second to 24 hours). Set Time overrides this for the current workspace."
+        },
+        "clickTimer.showCompletionNotification": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a notification when the countdown finishes."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "vscode:prepublish": "npm run compile",
+    "test": "npm run compile && node --test test/*.test.cjs",
+    "test:integration": "npm run compile && node scripts/test-integration.cjs",
+    "package": "vsce package --out click-timer.vsix",
+    "publish:marketplace": "vsce publish --packagePath click-timer.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.96.0",
+    "@vscode/test-electron": "^2.5.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}
