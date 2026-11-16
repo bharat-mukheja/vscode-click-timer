@@ -74,4 +74,6 @@ npm run package
 
 Press **F5** to launch an Extension Development Host with the timer. `npm run test:integration` runs a smoke test in a separate VS Code instance. Set `VSCODE_EXECUTABLE_PATH` to test an installed VS Code executable; otherwise the runner downloads a test instance.
 
+The extension icon is generated from `assets/icon.svg`. After editing the artwork, run `npm run generate:icon` to update the 256 × 256 PNG used by VS Code and the Marketplace.
+
 The runtime has no third-party dependencies, network requests, or telemetry. `src/timer.ts` contains the clock and duration parser; `src/extension.ts` connects it to VS Code's status bar, commands, input, and workspace storage.

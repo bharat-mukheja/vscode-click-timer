@@ -2,33 +2,77 @@
   "name": "vscode-click-timer",
   "displayName": "Click Timer",
   "description": "A status bar countdown timer. Click to pause or resume, and open the menu to set time or manage the timer.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "bmukheja",
   "license": "MIT",
+  "icon": "assets/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/bharat-mukheja/vscode-click-timer.git"
   },
   "homepage": "https://github.com/bharat-mukheja/vscode-click-timer#readme",
-  "bugs": { "url": "https://github.com/bharat-mukheja/vscode-click-timer/issues" },
-  "engines": { "vscode": "^1.96.0" },
-  "categories": ["Other"],
-  "keywords": ["timer", "countdown", "status bar", "focus"],
+  "bugs": {
+    "url": "https://github.com/bharat-mukheja/vscode-click-timer/issues"
+  },
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "timer",
+    "countdown",
+    "status bar",
+    "focus"
+  ],
   "main": "./dist/extension.js",
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "capabilities": {
-    "untrustedWorkspaces": { "supported": true },
+    "untrustedWorkspaces": {
+      "supported": true
+    },
     "virtualWorkspaces": true
   },
   "contributes": {
     "commands": [
-      { "command": "clickTimer.toggle", "title": "Pause / Resume", "category": "Click Timer" },
-      { "command": "clickTimer.showMenu", "title": "Show Timer Menu", "category": "Click Timer" },
-      { "command": "clickTimer.start", "title": "Start / Resume", "category": "Click Timer" },
-      { "command": "clickTimer.pause", "title": "Pause", "category": "Click Timer" },
-      { "command": "clickTimer.stop", "title": "Stop", "category": "Click Timer" },
-      { "command": "clickTimer.reset", "title": "Reset", "category": "Click Timer" },
-      { "command": "clickTimer.setTime", "title": "Set Time", "category": "Click Timer" }
+      {
+        "command": "clickTimer.toggle",
+        "title": "Pause / Resume",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.showMenu",
+        "title": "Show Timer Menu",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.start",
+        "title": "Start / Resume",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.pause",
+        "title": "Pause",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.stop",
+        "title": "Stop",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.reset",
+        "title": "Reset",
+        "category": "Click Timer"
+      },
+      {
+        "command": "clickTimer.setTime",
+        "title": "Set Time",
+        "category": "Click Timer"
+      }
     ],
     "configuration": {
       "title": "Click Timer",
@@ -49,6 +93,7 @@
     }
   },
   "scripts": {
+    "generate:icon": "node scripts/generate-icon.cjs",
     "compile": "tsc -p .",
     "watch": "tsc -watch -p .",
     "vscode:prepublish": "npm run compile",
@@ -58,6 +103,7 @@
     "publish:marketplace": "vsce publish --packagePath click-timer.vsix"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.0.0",
     "@types/vscode": "1.96.0",
     "@vscode/test-electron": "^2.5.0",

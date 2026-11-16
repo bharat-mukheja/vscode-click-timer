@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Added a custom timer icon for the Extensions view and Marketplace listing.
+
 ## 0.1.0
 
 - Added a status bar countdown with click-to-start, pause, and resume.
